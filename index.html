@@ -1,24 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <title>Personal blog</title>
-  <link href="site.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Scientific Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        section {
+            padding: 2rem;
+        }
+
+        .articles {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .article-poster {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 1rem;
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .tools {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tool-card {
+            width: 300px;
+            margin: 1rem;
+            padding: 1rem;
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
 
 <body>
+    <header>
+        <h1>Mehran.QI.AI
+        
+        </h1>
+    </header>
 
-  <div id="main">
-  <h1><center>Mehran.QI.AI</center></h1>
-  <h2><center>Exploring the Many Particle systems through 
-    Artificial Intelligence and Tensor Networks </center>
-  </h2>
+    <section id="introduction" class="articles">
+        <h2>Exploring the Many Particle systems through Artificial Intelligence and Tensor Networks</h2>
+        <p> 
+          Welcome to my website, where I share my passion for advancing the field of many-body systems and Quantum information theory. 
+          As a physicist and AI programmer, I am dedicated to exploring the frontiers of quantum information and
+          machine learning, using cutting-edge tools to uncover new insights into complex systems. 
+          Follow me on my journey of discovery, as I strive to push the boundaries of knowledge and understanding.
+        </p>
+    </section>
 
-  <p></p>
-  <p></p>
-  <p></p>
-  <p></p>
-  </div>
+    <section id="recent-articles" class="articles">
+        <h2>Recent Articles</h2>
+        
+        <div class="article-poster">
+            <h3>Article Title 1</h3>
+            <p>Summary of the first article goes here...</p>
+        </div>
+        
+        <div class="article-poster">
+            <h3>Article Title 2</h3>
+            <p>Summary of the second article goes here...</p>
+        </div>
 
+        <!-- Add more article posters as needed -->
+    </section>
+
+    <section id="useful-tools" class="articles">
+        <h2>Useful AI Tools for Quantum Machine Learning</h2>
+
+        <div class="tools">
+            <div class="tool-card">
+                <h3>Tool 1</h3>
+                <p>Description of the first AI tool goes here...</p>
+            </div>
+
+            <div class="tool-card">
+                <h3>Tool 2</h3>
+                <p>Description of the second AI tool goes here...</p>
+            </div>
+
+            <!-- Add more tool cards as needed -->
+        </div>
+    </section>
 </body>
+
 </html>
