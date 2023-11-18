@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Scientific Website</title>
+
+    <!-- Include MathJax script -->
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        section {
+            padding: 2rem;
+        }
+
+        .articles {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .article-poster {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 1rem;
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .tools {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tool-card {
+            width: 300px;
+            margin: 1rem;
+            padding: 1rem;
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Mehran.QI.AI</h1>
+    </header>
+
+    <section id="introduction" class="articles">
+        <h2>Superdense coding</h2>
+        <p> 
+            Superdense coding is a quantum communication protocol that allows a sender to send two 
+            classical bits of information to another user by only utilizing one qubit. Here I have 
+            a plan to explain the story behind this protocol in simple words.  
+            
+            <h4>Summary of superdense coding</h4>  
+            1) Alice and Bob, who are our users, share an EPR pair.<br>   
+            2) Alice wants to share two classical bits with Bob (this is the goal).<br>   
+            3) Alice encodes two classical bits of information by a qubit.<br>
+            4) There is a Quantum Channel between Alice and Bob.  <br>
+            5) Alice is sending the encoded qubit, and Bob decodes this to get Alice's two classical bits.<br>
+            <br>
+            <h4>0s step: Make EPR pair</h4>
+            The EPR pair between Alice and Bob is described by: 
+            $$\frac{1}{\sqrt{2}} \left(|00\rangle + |11\rangle\right)$$
+            which means the first qubit belongs to Alice and the second qubit belongs to Bob. Here Alice will encode her qubit
+            with respect to the classical bits that she wants to send. We assume that \(b_{0}b_{1}\)  are two classical bits that 
+            Alice wants to send them to Bob. There are four situations here that we want to describe them:<br>
+            <br>
+            <h4>1st step: Alice Operation and Encoding</h4>
+            If \(b_{0}b_{1} = 00\), it means that Alice did nothing with EPR pair and the formation of EPR pair after alice operation 
+            is like \(\left(|00\rangle + |11\rangle\right)/{\sqrt{2}}\) <br>
+            If \(b_{0}b_{1} = 01\), it means that Alice did X transportation or NOT Gate on EPR pair which its formation after Alice operation is like
+            \(\left(|10\rangle + |01\rangle\right)/{\sqrt{2}}\).<br>
+            If \(b_{0}b_{1} = 10\), it means that Alice did Z transportation or Phase change on EPR pair and its formation after Alice operation is like 
+            \( \left(|00\rangle - |11\rangle\right)/{\sqrt{2}}\).<br>
+            If \(b_{0}b_{1} = 11\) , it means that Alice did XZ transportation on EPR pair and its formation after Alice operation is like 
+            \( \left(|10\rangle - |01\rangle\right)/{\sqrt{2}}\) .<br>
+            <br>
+            <h4>2nd step: Send qubit from Alice to Bob through the Quantum Channel</h4>
+            In this protocol we assume that there is a channel between two users (Alice and Bob) and now Alice send her qubit to Bob.
+            <h4>3rd step: Bob Operation and Decode the information</h4>
+            Bob Operation consist of by a \(4*4\) Matrix which is a Hadamard gate followed by a NOT operator.<br>
+            <br>
+            
+            <h4>Superdense coding in summary</h4>
+            <!DOCTYPE html>
+            <html>
+            <style>
+            table, th, td {
+              border:1px solid black;
+            }
+            td {
+                text-align: center;
+                }
+            </style>
+            <body>
+
+                        
+            <table style="width:100%">
+              <tr>
+                <th>\(b_{0}b_{1}\) </th>
+                <th>Encoding operation(Alice)</th>
+                <th>Decoding Operation(Bob)</th>
+              </tr>
+              <tr>
+                <td>\(00\)</td>
+                <td>\(\left(|00\rangle + |11\rangle\right)/{\sqrt{2}}\)</td>
+                <td>\((\left|00\rangle\right)\)</td>
+              </tr>
+              <tr>
+                <td>\(01\)</td>
+                <td>\(\left(|10\rangle + |01\rangle\right)/{\sqrt{2}}\)</td>
+                <td>\((\left|01\rangle\right)\)</td>
+              </tr>
+              <tr>
+                <td>\(10\)</td>
+                <td>\( \left(|00\rangle - |11\rangle\right)/{\sqrt{2}}\)</td>
+                <td>\((\left|10\rangle\right)\)</td>
+              </tr>
+              <tr>
+                <td>\(11\)</td>
+                <td>\( \left(|10\rangle - |01\rangle\right)/{\sqrt{2}}\)</td>
+                <td>\((\left|11\rangle\right)\)</td>
+              </tr>
+            </table>
+           
+            
+            </body>
+            </html>
+            
+            
+            
+            
+        </p>
+    </section>
+    
