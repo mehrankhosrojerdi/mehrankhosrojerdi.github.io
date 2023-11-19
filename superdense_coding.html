@@ -68,38 +68,43 @@
     <section id="introduction" class="articles">
         <h2>Superdense coding</h2>
         <p> 
-            Superdense coding is a quantum communication protocol that allows a sender to send two 
-            classical bits of information to another user by only utilizing one qubit. Here I have 
-            a plan to explain the story behind this protocol in simple words.  
+            <h3>Objective</h3>
+            The superdense coding protocol is one type of quantum communication that allows 
+            one qubit to carry two classical bits of information. The idea behind superdense 
+            coding is that a sender wants to send two classical bits of information using only one qubit.
             
-            <h4>Summary of superdense coding</h4>  
+            <h3>The procedure</h3>  
             1) Alice and Bob, who are our users, share an EPR pair.<br>   
             2) Alice wants to share two classical bits with Bob (this is the goal).<br>   
             3) Alice encodes two classical bits of information by a qubit.<br>
             4) There is a Quantum Channel between Alice and Bob.  <br>
-            5) Alice is sending the encoded qubit, and Bob decodes this to get Alice's two classical bits.<br>
+            5) Bob decodes this to get Alice's two classical bits.<br>
             <br>
-            <h4>0s step: Make EPR pair</h4>
+
+            <h3>Superdense coding protocol</h3>
+
+            <h4>Zero step: Make EPR pair</h4>
             The EPR pair between Alice and Bob is described by: 
             $$\frac{1}{\sqrt{2}} \left(|00\rangle + |11\rangle\right)$$
-            which means the first qubit belongs to Alice and the second qubit belongs to Bob. Here Alice will encode her qubit
-            with respect to the classical bits that she wants to send. We assume that \(b_{0}b_{1}\)  are two classical bits that 
-            Alice wants to send them to Bob. There are four situations here that we want to describe them:<br>
+            which means that the first qubit belongs to Alice and the second qubit belongs to Bob. 
+            Alice sends her qubit to bob and this is the only qubit that is send during the protocol.<br>
             <br>
+
             <h4>1st step: Alice Operation and Encoding</h4>
-            If \(b_{0}b_{1} = 00\), it means that Alice did nothing with EPR pair and the formation of EPR pair after alice operation 
-            is like \(\left(|00\rangle + |11\rangle\right)/{\sqrt{2}}\) <br>
-            If \(b_{0}b_{1} = 01\), it means that Alice did X transportation or NOT Gate on EPR pair which its formation after Alice operation is like
-            \(\left(|10\rangle + |01\rangle\right)/{\sqrt{2}}\).<br>
-            If \(b_{0}b_{1} = 10\), it means that Alice did Z transportation or Phase change on EPR pair and its formation after Alice operation is like 
-            \( \left(|00\rangle - |11\rangle\right)/{\sqrt{2}}\).<br>
-            If \(b_{0}b_{1} = 11\) , it means that Alice did XZ transportation on EPR pair and its formation after Alice operation is like 
-            \( \left(|10\rangle - |01\rangle\right)/{\sqrt{2}}\) .<br>
-            <br>
+
+            Here Alice will encode her qubit with respect to the classical bits that she wants to send. 
+            We assume that \(b_{0}\) and \(b_{1}\) are two classical bits that Alice wants to send them to Bob. 
+            Alice's qubit can encode classical bits according to certain rules. In the case where \(b_{0} = 1\), 
+            Alice performs the \(Z\) transformation on her qubit, and in the case where it is not, she doesn't do anything. 
+            In the case where \(b_{1} = 1\), Alice will apply the \(X\) transformation on her qubit, and in the case where
+            it is not, she doesn't do any thing. Now we can predict what will be happening after Alice's operation.<br>
+
             <h4>2nd step: Send qubit from Alice to Bob through the Quantum Channel</h4>
             In this protocol we assume that there is a channel between two users (Alice and Bob) and now Alice send her qubit to Bob.
             <h4>3rd step: Bob Operation and Decode the information</h4>
-            Bob Operation consist of by a \(4*4\) Matrix which is a Hadamard gate followed by a NOT operator.<br>
+            Bob applies a controlled-NOT operation to the EPR pair, where Alice's qubit is the control and Bob qubit is the
+            target. Then Bob applies a Hadamard transform to Alice's qubit and at the end Bob measures both qubits.
+            Bob Operation consist of by a \(4 \times 4\) Matrix which is a Hadamard gate followed by a C-NOT operator.<br>
             <br>
             
             <h4>Superdense coding in summary</h4>
@@ -140,15 +145,15 @@
               <tr>
                 <td>\(11\)</td>
                 <td>\( \left(|10\rangle - |01\rangle\right)/{\sqrt{2}}\)</td>
-                <td>\((\left|11\rangle\right)\)</td>
+                <td>\(-(\left|11\rangle\right)\)</td>
               </tr>
             </table>
            
             
             </body>
             </html>
-            
-            
+            <br>
+            When Bob measures at the end of the protocol, it is clear that he sees \(b_{0}\) and \(b_{1}\) as required.
             
             
         </p>
