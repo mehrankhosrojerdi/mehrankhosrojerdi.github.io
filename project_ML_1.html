@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>project_ML_1</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Project 1</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -15103,25 +15103,30 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     </script>
     <!-- End of mathjax configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="k">for</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;~/Documents/2024_projects/project 1: Binary Classification with a Bank Churn Dataset/&#39;</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span>
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>A number of binary classification methods exist in Python for this particular problem, including RandomForestClassifier, XGBClassifier, LGBMClassifier, and CatBoostClassifier. We are choosing CatBoost because it designed to handle categorical features, including strings, naturally, which is the most important problem of this project. Categorical features are variables that can take on one of a limited, and usually fixed, number of possible values or categories. In many machine learning algorithms, these categorical features need to be converted into numerical format through techniques like one-hot encoding or label encoding.</p>
 
-     </div>
 </div>
 </div>
 </div>
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>First we have to import necessary modules.</p>
 
+</div>
+</div>
+</div>
 </div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15130,16 +15135,11 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="o">*</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">catboost</span> <span class="kn">import</span> <span class="n">CatBoostClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span><span class="n">roc_auc_score</span>
 </pre></div>
 
      </div>
@@ -15147,7 +15147,19 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 
-</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Let's have a look on  dataset</p>
+
+</div>
+</div>
+</div>
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15155,9 +15167,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;~/Documents/2024_projects/project 1: Binary Classification with a Bank Churn Dataset/train.csv&#39;</span><span class="p">)</span>
-<span class="n">test_dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;~/Documents/2024_projects/project 1: Binary Classification with a Bank Churn Dataset/test.csv&#39;</span><span class="p">)</span>
-<span class="n">sample_submission</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;~/Documents/2024_projects/project 1: Binary Classification with a Bank Churn Dataset/sample_submission.csv&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_dataset</span>
 </pre></div>
 
      </div>
@@ -15165,6 +15175,635 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>CustomerId</th>
+      <th>Surname</th>
+      <th>CreditScore</th>
+      <th>Geography</th>
+      <th>Gender</th>
+      <th>Age</th>
+      <th>Tenure</th>
+      <th>Balance</th>
+      <th>NumOfProducts</th>
+      <th>HasCrCard</th>
+      <th>IsActiveMember</th>
+      <th>EstimatedSalary</th>
+      <th>Exited</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>15674932</td>
+      <td>Okwudilichukwu</td>
+      <td>668</td>
+      <td>France</td>
+      <td>Male</td>
+      <td>33.0</td>
+      <td>3</td>
+      <td>0.00</td>
+      <td>2</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>181449.97</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>15749177</td>
+      <td>Okwudiliolisa</td>
+      <td>627</td>
+      <td>France</td>
+      <td>Male</td>
+      <td>33.0</td>
+      <td>1</td>
+      <td>0.00</td>
+      <td>2</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>49503.50</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>15694510</td>
+      <td>Hsueh</td>
+      <td>678</td>
+      <td>France</td>
+      <td>Male</td>
+      <td>40.0</td>
+      <td>10</td>
+      <td>0.00</td>
+      <td>2</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>184866.69</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>15741417</td>
+      <td>Kao</td>
+      <td>581</td>
+      <td>France</td>
+      <td>Male</td>
+      <td>34.0</td>
+      <td>2</td>
+      <td>148882.54</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>84560.88</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>15766172</td>
+      <td>Chiemenam</td>
+      <td>716</td>
+      <td>Spain</td>
+      <td>Male</td>
+      <td>33.0</td>
+      <td>5</td>
+      <td>0.00</td>
+      <td>2</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>15068.83</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>165029</th>
+      <td>165029</td>
+      <td>15667085</td>
+      <td>Meng</td>
+      <td>667</td>
+      <td>Spain</td>
+      <td>Female</td>
+      <td>33.0</td>
+      <td>2</td>
+      <td>0.00</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>131834.75</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>165030</th>
+      <td>165030</td>
+      <td>15665521</td>
+      <td>Okechukwu</td>
+      <td>792</td>
+      <td>France</td>
+      <td>Male</td>
+      <td>35.0</td>
+      <td>3</td>
+      <td>0.00</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>131834.45</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>165031</th>
+      <td>165031</td>
+      <td>15664752</td>
+      <td>Hsia</td>
+      <td>565</td>
+      <td>France</td>
+      <td>Male</td>
+      <td>31.0</td>
+      <td>5</td>
+      <td>0.00</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>127429.56</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>165032</th>
+      <td>165032</td>
+      <td>15689614</td>
+      <td>Hsiung</td>
+      <td>554</td>
+      <td>Spain</td>
+      <td>Female</td>
+      <td>30.0</td>
+      <td>7</td>
+      <td>161533.00</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>71173.03</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>165033</th>
+      <td>165033</td>
+      <td>15732798</td>
+      <td>Ulyanov</td>
+      <td>850</td>
+      <td>France</td>
+      <td>Male</td>
+      <td>31.0</td>
+      <td>1</td>
+      <td>0.00</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>61581.79</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>165034 rows × 14 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_dataset</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>CustomerId</th>
+      <th>Surname</th>
+      <th>CreditScore</th>
+      <th>Geography</th>
+      <th>Gender</th>
+      <th>Age</th>
+      <th>Tenure</th>
+      <th>Balance</th>
+      <th>NumOfProducts</th>
+      <th>HasCrCard</th>
+      <th>IsActiveMember</th>
+      <th>EstimatedSalary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>165034</td>
+      <td>15773898</td>
+      <td>Lucchese</td>
+      <td>586</td>
+      <td>France</td>
+      <td>Female</td>
+      <td>23.0</td>
+      <td>2</td>
+      <td>0.00</td>
+      <td>2</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>160976.75</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>165035</td>
+      <td>15782418</td>
+      <td>Nott</td>
+      <td>683</td>
+      <td>France</td>
+      <td>Female</td>
+      <td>46.0</td>
+      <td>2</td>
+      <td>0.00</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>72549.27</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>165036</td>
+      <td>15807120</td>
+      <td>K?</td>
+      <td>656</td>
+      <td>France</td>
+      <td>Female</td>
+      <td>34.0</td>
+      <td>7</td>
+      <td>0.00</td>
+      <td>2</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>138882.09</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>165037</td>
+      <td>15808905</td>
+      <td>O'Donnell</td>
+      <td>681</td>
+      <td>France</td>
+      <td>Male</td>
+      <td>36.0</td>
+      <td>8</td>
+      <td>0.00</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>113931.57</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>165038</td>
+      <td>15607314</td>
+      <td>Higgins</td>
+      <td>752</td>
+      <td>Germany</td>
+      <td>Male</td>
+      <td>38.0</td>
+      <td>10</td>
+      <td>121263.62</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>139431.00</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>110018</th>
+      <td>275052</td>
+      <td>15662091</td>
+      <td>P'eng</td>
+      <td>570</td>
+      <td>Spain</td>
+      <td>Male</td>
+      <td>29.0</td>
+      <td>7</td>
+      <td>116099.82</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>148087.62</td>
+    </tr>
+    <tr>
+      <th>110019</th>
+      <td>275053</td>
+      <td>15774133</td>
+      <td>Cox</td>
+      <td>575</td>
+      <td>France</td>
+      <td>Female</td>
+      <td>36.0</td>
+      <td>4</td>
+      <td>178032.53</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>42181.68</td>
+    </tr>
+    <tr>
+      <th>110020</th>
+      <td>275054</td>
+      <td>15728456</td>
+      <td>Ch'iu</td>
+      <td>712</td>
+      <td>France</td>
+      <td>Male</td>
+      <td>31.0</td>
+      <td>2</td>
+      <td>0.00</td>
+      <td>2</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>16287.38</td>
+    </tr>
+    <tr>
+      <th>110021</th>
+      <td>275055</td>
+      <td>15687541</td>
+      <td>Yegorova</td>
+      <td>709</td>
+      <td>France</td>
+      <td>Female</td>
+      <td>32.0</td>
+      <td>3</td>
+      <td>0.00</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>158816.58</td>
+    </tr>
+    <tr>
+      <th>110022</th>
+      <td>275056</td>
+      <td>15663942</td>
+      <td>Tuan</td>
+      <td>621</td>
+      <td>France</td>
+      <td>Female</td>
+      <td>37.0</td>
+      <td>7</td>
+      <td>87848.39</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>24210.56</td>
+    </tr>
+  </tbody>
+</table>
+<p>110023 rows × 13 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sample_submission</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>Exited</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>165034</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>165035</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>165036</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>165037</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>165038</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>110018</th>
+      <td>275052</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>110019</th>
+      <td>275053</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>110020</th>
+      <td>275054</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>110021</th>
+      <td>275055</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>110022</th>
+      <td>275056</td>
+      <td>0.5</td>
+    </tr>
+  </tbody>
+</table>
+<p>110023 rows × 2 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>It seems that  <code>id</code> and <code>CustomerId</code> are a part of data that doesn't have any effect on result, therefore it is better to drop them.</p>
+
+</div>
+</div>
+</div>
 </div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15182,6 +15821,496 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Let's have a look again</p>
+
+</div>
+</div>
+</div>
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_dataset</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Surname</th>
+      <th>CreditScore</th>
+      <th>Geography</th>
+      <th>Gender</th>
+      <th>Age</th>
+      <th>Tenure</th>
+      <th>Balance</th>
+      <th>NumOfProducts</th>
+      <th>HasCrCard</th>
+      <th>IsActiveMember</th>
+      <th>EstimatedSalary</th>
+      <th>Exited</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Okwudilichukwu</td>
+      <td>668</td>
+      <td>France</td>
+      <td>Male</td>
+      <td>33.0</td>
+      <td>3</td>
+      <td>0.00</td>
+      <td>2</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>181449.97</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Okwudiliolisa</td>
+      <td>627</td>
+      <td>France</td>
+      <td>Male</td>
+      <td>33.0</td>
+      <td>1</td>
+      <td>0.00</td>
+      <td>2</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>49503.50</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Hsueh</td>
+      <td>678</td>
+      <td>France</td>
+      <td>Male</td>
+      <td>40.0</td>
+      <td>10</td>
+      <td>0.00</td>
+      <td>2</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>184866.69</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Kao</td>
+      <td>581</td>
+      <td>France</td>
+      <td>Male</td>
+      <td>34.0</td>
+      <td>2</td>
+      <td>148882.54</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>84560.88</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Chiemenam</td>
+      <td>716</td>
+      <td>Spain</td>
+      <td>Male</td>
+      <td>33.0</td>
+      <td>5</td>
+      <td>0.00</td>
+      <td>2</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>15068.83</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>165029</th>
+      <td>Meng</td>
+      <td>667</td>
+      <td>Spain</td>
+      <td>Female</td>
+      <td>33.0</td>
+      <td>2</td>
+      <td>0.00</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>131834.75</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>165030</th>
+      <td>Okechukwu</td>
+      <td>792</td>
+      <td>France</td>
+      <td>Male</td>
+      <td>35.0</td>
+      <td>3</td>
+      <td>0.00</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>131834.45</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>165031</th>
+      <td>Hsia</td>
+      <td>565</td>
+      <td>France</td>
+      <td>Male</td>
+      <td>31.0</td>
+      <td>5</td>
+      <td>0.00</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>127429.56</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>165032</th>
+      <td>Hsiung</td>
+      <td>554</td>
+      <td>Spain</td>
+      <td>Female</td>
+      <td>30.0</td>
+      <td>7</td>
+      <td>161533.00</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>71173.03</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>165033</th>
+      <td>Ulyanov</td>
+      <td>850</td>
+      <td>France</td>
+      <td>Male</td>
+      <td>31.0</td>
+      <td>1</td>
+      <td>0.00</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>61581.79</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>165034 rows × 12 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_dataset</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Surname</th>
+      <th>CreditScore</th>
+      <th>Geography</th>
+      <th>Gender</th>
+      <th>Age</th>
+      <th>Tenure</th>
+      <th>Balance</th>
+      <th>NumOfProducts</th>
+      <th>HasCrCard</th>
+      <th>IsActiveMember</th>
+      <th>EstimatedSalary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Lucchese</td>
+      <td>586</td>
+      <td>France</td>
+      <td>Female</td>
+      <td>23.0</td>
+      <td>2</td>
+      <td>0.00</td>
+      <td>2</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>160976.75</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Nott</td>
+      <td>683</td>
+      <td>France</td>
+      <td>Female</td>
+      <td>46.0</td>
+      <td>2</td>
+      <td>0.00</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>72549.27</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>K?</td>
+      <td>656</td>
+      <td>France</td>
+      <td>Female</td>
+      <td>34.0</td>
+      <td>7</td>
+      <td>0.00</td>
+      <td>2</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>138882.09</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>O'Donnell</td>
+      <td>681</td>
+      <td>France</td>
+      <td>Male</td>
+      <td>36.0</td>
+      <td>8</td>
+      <td>0.00</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>113931.57</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Higgins</td>
+      <td>752</td>
+      <td>Germany</td>
+      <td>Male</td>
+      <td>38.0</td>
+      <td>10</td>
+      <td>121263.62</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>139431.00</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>110018</th>
+      <td>P'eng</td>
+      <td>570</td>
+      <td>Spain</td>
+      <td>Male</td>
+      <td>29.0</td>
+      <td>7</td>
+      <td>116099.82</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>148087.62</td>
+    </tr>
+    <tr>
+      <th>110019</th>
+      <td>Cox</td>
+      <td>575</td>
+      <td>France</td>
+      <td>Female</td>
+      <td>36.0</td>
+      <td>4</td>
+      <td>178032.53</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>42181.68</td>
+    </tr>
+    <tr>
+      <th>110020</th>
+      <td>Ch'iu</td>
+      <td>712</td>
+      <td>France</td>
+      <td>Male</td>
+      <td>31.0</td>
+      <td>2</td>
+      <td>0.00</td>
+      <td>2</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>16287.38</td>
+    </tr>
+    <tr>
+      <th>110021</th>
+      <td>Yegorova</td>
+      <td>709</td>
+      <td>France</td>
+      <td>Female</td>
+      <td>32.0</td>
+      <td>3</td>
+      <td>0.00</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>158816.58</td>
+    </tr>
+    <tr>
+      <th>110022</th>
+      <td>Tuan</td>
+      <td>621</td>
+      <td>France</td>
+      <td>Female</td>
+      <td>37.0</td>
+      <td>7</td>
+      <td>87848.39</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>24210.56</td>
+    </tr>
+  </tbody>
+</table>
+<p>110023 rows × 11 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>That's great! now we have a look at the dataset features type and we have to unify them because cat_features must be integer or string.</p>
+
+</div>
+</div>
+</div>
 </div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15323,6 +16452,81 @@ dtype: object</pre>
 </div>
 </div>
 
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;train dataset types: </span><span class="se">\n</span><span class="si">{</span><span class="n">train_dataset</span><span class="o">.</span><span class="n">dtypes</span><span class="si">}</span><span class="s1">, </span><span class="se">\n</span><span class="s1">and test dataset type: </span><span class="se">\n</span><span class="si">{</span><span class="n">test_dataset</span><span class="o">.</span><span class="n">dtypes</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>train dataset types: 
+Surname            object
+CreditScore         int64
+Geography          object
+Gender             object
+Age                 int64
+Tenure              int64
+Balance             int64
+NumOfProducts       int64
+HasCrCard           int64
+IsActiveMember      int64
+EstimatedSalary     int64
+Exited              int64
+dtype: object, 
+and test dataset type: 
+Surname            object
+CreditScore         int64
+Geography          object
+Gender             object
+Age                 int64
+Tenure              int64
+Balance             int64
+NumOfProducts       int64
+HasCrCard           int64
+IsActiveMember      int64
+EstimatedSalary     int64
+dtype: object
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Then we have to split data between test and train part. Here we have to bear in mind that this test part in fact is validation data for correcting the hyperparameters inside the model.</p>
+
+</div>
+</div>
+</div>
 </div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15342,6 +16546,18 @@ dtype: object</pre>
 </div>
 </div>
 
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Now we can train model by using CatBoost Classifier</p>
+
+</div>
+</div>
+</div>
 </div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15373,211 +16589,211 @@ dtype: object</pre>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>0:	learn: 0.6112027	test: 0.6107749	best: 0.6107749 (0)	total: 307ms	remaining: 1m 1s
-1:	learn: 0.5506661	test: 0.5496257	best: 0.5496257 (1)	total: 581ms	remaining: 57.5s
-2:	learn: 0.5042471	test: 0.5031381	best: 0.5031381 (2)	total: 875ms	remaining: 57.4s
-3:	learn: 0.4680888	test: 0.4669634	best: 0.4669634 (3)	total: 1.11s	remaining: 54.4s
-4:	learn: 0.4390297	test: 0.4378454	best: 0.4378454 (4)	total: 1.43s	remaining: 55.8s
-5:	learn: 0.4184138	test: 0.4171120	best: 0.4171120 (5)	total: 1.65s	remaining: 53.4s
-6:	learn: 0.4023500	test: 0.4010655	best: 0.4010655 (6)	total: 1.94s	remaining: 53.4s
-7:	learn: 0.3906762	test: 0.3892114	best: 0.3892114 (7)	total: 2.22s	remaining: 53.3s
-8:	learn: 0.3772044	test: 0.3755307	best: 0.3755307 (8)	total: 2.59s	remaining: 54.9s
-9:	learn: 0.3660887	test: 0.3643711	best: 0.3643711 (9)	total: 2.85s	remaining: 54.1s
-10:	learn: 0.3571112	test: 0.3552186	best: 0.3552186 (10)	total: 3.05s	remaining: 52.4s
-11:	learn: 0.3500494	test: 0.3482524	best: 0.3482524 (11)	total: 3.4s	remaining: 53.2s
-12:	learn: 0.3441647	test: 0.3423675	best: 0.3423675 (12)	total: 3.79s	remaining: 54.5s
-13:	learn: 0.3391549	test: 0.3374483	best: 0.3374483 (13)	total: 4.1s	remaining: 54.4s
-14:	learn: 0.3350589	test: 0.3334484	best: 0.3334484 (14)	total: 4.37s	remaining: 53.9s
-15:	learn: 0.3318906	test: 0.3303397	best: 0.3303397 (15)	total: 4.6s	remaining: 52.9s
-16:	learn: 0.3290140	test: 0.3276102	best: 0.3276102 (16)	total: 4.81s	remaining: 51.8s
-17:	learn: 0.3266607	test: 0.3253757	best: 0.3253757 (17)	total: 5.06s	remaining: 51.2s
-18:	learn: 0.3246432	test: 0.3234103	best: 0.3234103 (18)	total: 5.27s	remaining: 50.2s
-19:	learn: 0.3231292	test: 0.3219178	best: 0.3219178 (19)	total: 5.55s	remaining: 49.9s
-20:	learn: 0.3214609	test: 0.3204887	best: 0.3204887 (20)	total: 5.91s	remaining: 50.4s
-21:	learn: 0.3200723	test: 0.3192767	best: 0.3192767 (21)	total: 6.28s	remaining: 50.8s
-22:	learn: 0.3188543	test: 0.3181970	best: 0.3181970 (22)	total: 6.55s	remaining: 50.4s
-23:	learn: 0.3178018	test: 0.3173122	best: 0.3173122 (23)	total: 6.95s	remaining: 51s
-24:	learn: 0.3165971	test: 0.3163119	best: 0.3163119 (24)	total: 7.43s	remaining: 52s
-25:	learn: 0.3151605	test: 0.3151881	best: 0.3151881 (25)	total: 7.93s	remaining: 53.1s
-26:	learn: 0.3143270	test: 0.3144959	best: 0.3144959 (26)	total: 8.4s	remaining: 53.9s
-27:	learn: 0.3132606	test: 0.3136101	best: 0.3136101 (27)	total: 8.63s	remaining: 53s
-28:	learn: 0.3122833	test: 0.3129430	best: 0.3129430 (28)	total: 8.92s	remaining: 52.6s
-29:	learn: 0.3113626	test: 0.3123897	best: 0.3123897 (29)	total: 9.38s	remaining: 53.1s
-30:	learn: 0.3109344	test: 0.3121190	best: 0.3121190 (30)	total: 9.61s	remaining: 52.4s
-31:	learn: 0.3102120	test: 0.3117148	best: 0.3117148 (31)	total: 9.86s	remaining: 51.7s
-32:	learn: 0.3092942	test: 0.3112577	best: 0.3112577 (32)	total: 10.2s	remaining: 51.7s
-33:	learn: 0.3083612	test: 0.3106812	best: 0.3106812 (33)	total: 10.7s	remaining: 52.2s
-34:	learn: 0.3075718	test: 0.3102535	best: 0.3102535 (34)	total: 11s	remaining: 51.7s
-35:	learn: 0.3067913	test: 0.3098052	best: 0.3098052 (35)	total: 11.4s	remaining: 52.1s
-36:	learn: 0.3060413	test: 0.3094392	best: 0.3094392 (36)	total: 11.9s	remaining: 52.5s
-37:	learn: 0.3060215	test: 0.3094218	best: 0.3094218 (37)	total: 12s	remaining: 51s
-38:	learn: 0.3053616	test: 0.3092129	best: 0.3092129 (38)	total: 12.3s	remaining: 50.8s
-39:	learn: 0.3049446	test: 0.3090414	best: 0.3090414 (39)	total: 12.7s	remaining: 50.8s
-40:	learn: 0.3044714	test: 0.3087505	best: 0.3087505 (40)	total: 13.2s	remaining: 51.2s
-41:	learn: 0.3039318	test: 0.3085632	best: 0.3085632 (41)	total: 13.6s	remaining: 51s
-42:	learn: 0.3034644	test: 0.3083701	best: 0.3083701 (42)	total: 14s	remaining: 51s
-43:	learn: 0.3032386	test: 0.3082878	best: 0.3082878 (43)	total: 14.4s	remaining: 50.9s
-44:	learn: 0.3026025	test: 0.3079559	best: 0.3079559 (44)	total: 14.9s	remaining: 51.3s
-45:	learn: 0.3022544	test: 0.3078248	best: 0.3078248 (45)	total: 15.4s	remaining: 51.4s
-46:	learn: 0.3018325	test: 0.3076462	best: 0.3076462 (46)	total: 15.8s	remaining: 51.5s
-47:	learn: 0.3014195	test: 0.3075906	best: 0.3075906 (47)	total: 16.3s	remaining: 51.6s
-48:	learn: 0.3010489	test: 0.3074519	best: 0.3074519 (48)	total: 16.7s	remaining: 51.5s
-49:	learn: 0.3006611	test: 0.3072660	best: 0.3072660 (49)	total: 17.2s	remaining: 51.6s
-50:	learn: 0.3002258	test: 0.3070567	best: 0.3070567 (50)	total: 17.8s	remaining: 52s
-51:	learn: 0.2997358	test: 0.3069397	best: 0.3069397 (51)	total: 18.3s	remaining: 52.1s
-52:	learn: 0.2992960	test: 0.3069097	best: 0.3069097 (52)	total: 18.8s	remaining: 52.2s
-53:	learn: 0.2990247	test: 0.3068162	best: 0.3068162 (53)	total: 19.3s	remaining: 52.1s
-54:	learn: 0.2987406	test: 0.3067198	best: 0.3067198 (54)	total: 19.9s	remaining: 52.5s
-55:	learn: 0.2984116	test: 0.3066637	best: 0.3066637 (55)	total: 20.3s	remaining: 52.3s
-56:	learn: 0.2980676	test: 0.3065806	best: 0.3065806 (56)	total: 20.9s	remaining: 52.6s
-57:	learn: 0.2976753	test: 0.3064696	best: 0.3064696 (57)	total: 21.5s	remaining: 52.7s
-58:	learn: 0.2972314	test: 0.3063443	best: 0.3063443 (58)	total: 21.9s	remaining: 52.4s
-59:	learn: 0.2968899	test: 0.3062550	best: 0.3062550 (59)	total: 22.2s	remaining: 51.9s
-60:	learn: 0.2965123	test: 0.3062139	best: 0.3062139 (60)	total: 22.7s	remaining: 51.8s
-61:	learn: 0.2962487	test: 0.3061804	best: 0.3061804 (61)	total: 23.1s	remaining: 51.4s
-62:	learn: 0.2960108	test: 0.3060832	best: 0.3060832 (62)	total: 23.5s	remaining: 51.2s
-63:	learn: 0.2956448	test: 0.3059534	best: 0.3059534 (63)	total: 24.1s	remaining: 51.2s
-64:	learn: 0.2955414	test: 0.3059083	best: 0.3059083 (64)	total: 24.4s	remaining: 50.7s
-65:	learn: 0.2953636	test: 0.3058369	best: 0.3058369 (65)	total: 24.9s	remaining: 50.6s
-66:	learn: 0.2949252	test: 0.3057810	best: 0.3057810 (66)	total: 25.4s	remaining: 50.5s
-67:	learn: 0.2946804	test: 0.3057826	best: 0.3057810 (66)	total: 25.8s	remaining: 50s
-68:	learn: 0.2943064	test: 0.3057695	best: 0.3057695 (68)	total: 26.2s	remaining: 49.8s
-69:	learn: 0.2939637	test: 0.3057585	best: 0.3057585 (69)	total: 26.9s	remaining: 50s
-70:	learn: 0.2936496	test: 0.3057273	best: 0.3057273 (70)	total: 27.3s	remaining: 49.7s
-71:	learn: 0.2933248	test: 0.3057177	best: 0.3057177 (71)	total: 27.8s	remaining: 49.5s
-72:	learn: 0.2929650	test: 0.3057183	best: 0.3057177 (71)	total: 28.4s	remaining: 49.4s
-73:	learn: 0.2927025	test: 0.3056350	best: 0.3056350 (73)	total: 28.9s	remaining: 49.2s
-74:	learn: 0.2925661	test: 0.3055486	best: 0.3055486 (74)	total: 29.5s	remaining: 49.1s
-75:	learn: 0.2923041	test: 0.3055332	best: 0.3055332 (75)	total: 30s	remaining: 48.9s
-76:	learn: 0.2921381	test: 0.3055687	best: 0.3055332 (75)	total: 30.4s	remaining: 48.5s
-77:	learn: 0.2918420	test: 0.3055663	best: 0.3055332 (75)	total: 31s	remaining: 48.5s
-78:	learn: 0.2916735	test: 0.3055807	best: 0.3055332 (75)	total: 31.3s	remaining: 48s
-79:	learn: 0.2912162	test: 0.3055397	best: 0.3055332 (75)	total: 31.8s	remaining: 47.7s
-80:	learn: 0.2910118	test: 0.3054885	best: 0.3054885 (80)	total: 32.1s	remaining: 47.2s
-81:	learn: 0.2907766	test: 0.3055046	best: 0.3054885 (80)	total: 32.5s	remaining: 46.8s
-82:	learn: 0.2903750	test: 0.3054975	best: 0.3054885 (80)	total: 33.1s	remaining: 46.6s
-83:	learn: 0.2900059	test: 0.3054455	best: 0.3054455 (83)	total: 33.5s	remaining: 46.2s
-84:	learn: 0.2898216	test: 0.3053883	best: 0.3053883 (84)	total: 33.9s	remaining: 45.9s
-85:	learn: 0.2896948	test: 0.3053578	best: 0.3053578 (85)	total: 34.2s	remaining: 45.3s
-86:	learn: 0.2895134	test: 0.3053211	best: 0.3053211 (86)	total: 34.5s	remaining: 44.8s
-87:	learn: 0.2893229	test: 0.3052713	best: 0.3052713 (87)	total: 34.9s	remaining: 44.4s
-88:	learn: 0.2890922	test: 0.3052378	best: 0.3052378 (88)	total: 35.1s	remaining: 43.8s
-89:	learn: 0.2887968	test: 0.3052336	best: 0.3052336 (89)	total: 35.5s	remaining: 43.4s
-90:	learn: 0.2884827	test: 0.3052174	best: 0.3052174 (90)	total: 35.9s	remaining: 43s
-91:	learn: 0.2883270	test: 0.3051674	best: 0.3051674 (91)	total: 36.3s	remaining: 42.6s
-92:	learn: 0.2881757	test: 0.3051732	best: 0.3051674 (91)	total: 36.7s	remaining: 42.3s
-93:	learn: 0.2880475	test: 0.3051518	best: 0.3051518 (93)	total: 37s	remaining: 41.7s
-94:	learn: 0.2877052	test: 0.3051516	best: 0.3051516 (94)	total: 37.4s	remaining: 41.3s
-95:	learn: 0.2877041	test: 0.3051496	best: 0.3051496 (95)	total: 37.5s	remaining: 40.6s
-96:	learn: 0.2875713	test: 0.3051330	best: 0.3051330 (96)	total: 37.9s	remaining: 40.2s
-97:	learn: 0.2874079	test: 0.3050915	best: 0.3050915 (97)	total: 38.4s	remaining: 39.9s
-98:	learn: 0.2871934	test: 0.3050702	best: 0.3050702 (98)	total: 38.6s	remaining: 39.4s
-99:	learn: 0.2870954	test: 0.3050580	best: 0.3050580 (99)	total: 39.1s	remaining: 39.1s
-100:	learn: 0.2868555	test: 0.3050528	best: 0.3050528 (100)	total: 39.4s	remaining: 38.6s
-101:	learn: 0.2865842	test: 0.3050402	best: 0.3050402 (101)	total: 39.8s	remaining: 38.2s
-102:	learn: 0.2863913	test: 0.3050214	best: 0.3050214 (102)	total: 40.1s	remaining: 37.7s
-103:	learn: 0.2862805	test: 0.3050260	best: 0.3050214 (102)	total: 40.4s	remaining: 37.3s
-104:	learn: 0.2861408	test: 0.3050215	best: 0.3050214 (102)	total: 40.8s	remaining: 36.9s
-105:	learn: 0.2858944	test: 0.3049719	best: 0.3049719 (105)	total: 41.1s	remaining: 36.5s
-106:	learn: 0.2856674	test: 0.3049855	best: 0.3049719 (105)	total: 41.4s	remaining: 36s
-107:	learn: 0.2854097	test: 0.3050097	best: 0.3049719 (105)	total: 41.8s	remaining: 35.6s
-108:	learn: 0.2852364	test: 0.3049899	best: 0.3049719 (105)	total: 42.2s	remaining: 35.2s
-109:	learn: 0.2849840	test: 0.3049746	best: 0.3049719 (105)	total: 42.5s	remaining: 34.8s
-110:	learn: 0.2847430	test: 0.3049736	best: 0.3049719 (105)	total: 42.8s	remaining: 34.3s
-111:	learn: 0.2845810	test: 0.3049626	best: 0.3049626 (111)	total: 43.2s	remaining: 34s
-112:	learn: 0.2844143	test: 0.3049409	best: 0.3049409 (112)	total: 43.6s	remaining: 33.6s
-113:	learn: 0.2842477	test: 0.3049795	best: 0.3049409 (112)	total: 44s	remaining: 33.2s
-114:	learn: 0.2839405	test: 0.3049333	best: 0.3049333 (114)	total: 44.4s	remaining: 32.8s
-115:	learn: 0.2838360	test: 0.3049510	best: 0.3049333 (114)	total: 44.8s	remaining: 32.4s
-116:	learn: 0.2837304	test: 0.3049456	best: 0.3049333 (114)	total: 45.1s	remaining: 32s
-117:	learn: 0.2836662	test: 0.3049449	best: 0.3049333 (114)	total: 45.6s	remaining: 31.7s
-118:	learn: 0.2834710	test: 0.3049424	best: 0.3049333 (114)	total: 45.9s	remaining: 31.2s
-119:	learn: 0.2829695	test: 0.3049263	best: 0.3049263 (119)	total: 46.3s	remaining: 30.9s
-120:	learn: 0.2827849	test: 0.3049122	best: 0.3049122 (120)	total: 46.7s	remaining: 30.5s
-121:	learn: 0.2826957	test: 0.3048963	best: 0.3048963 (121)	total: 47s	remaining: 30.1s
-122:	learn: 0.2825099	test: 0.3048896	best: 0.3048896 (122)	total: 47.5s	remaining: 29.7s
-123:	learn: 0.2823796	test: 0.3049118	best: 0.3048896 (122)	total: 47.8s	remaining: 29.3s
-124:	learn: 0.2819487	test: 0.3048937	best: 0.3048896 (122)	total: 48.3s	remaining: 29s
-125:	learn: 0.2817003	test: 0.3048828	best: 0.3048828 (125)	total: 48.7s	remaining: 28.6s
-126:	learn: 0.2815461	test: 0.3048498	best: 0.3048498 (126)	total: 49s	remaining: 28.2s
-127:	learn: 0.2813088	test: 0.3048514	best: 0.3048498 (126)	total: 49.4s	remaining: 27.8s
-128:	learn: 0.2811311	test: 0.3048163	best: 0.3048163 (128)	total: 49.8s	remaining: 27.4s
-129:	learn: 0.2809872	test: 0.3047844	best: 0.3047844 (129)	total: 50.2s	remaining: 27s
-130:	learn: 0.2808343	test: 0.3047435	best: 0.3047435 (130)	total: 50.8s	remaining: 26.7s
-131:	learn: 0.2807138	test: 0.3047294	best: 0.3047294 (131)	total: 51.1s	remaining: 26.3s
-132:	learn: 0.2805780	test: 0.3047077	best: 0.3047077 (132)	total: 51.6s	remaining: 26s
-133:	learn: 0.2804042	test: 0.3046961	best: 0.3046961 (133)	total: 52s	remaining: 25.6s
-134:	learn: 0.2802492	test: 0.3047249	best: 0.3046961 (133)	total: 52.4s	remaining: 25.2s
-135:	learn: 0.2800181	test: 0.3047073	best: 0.3046961 (133)	total: 52.8s	remaining: 24.8s
-136:	learn: 0.2797939	test: 0.3047063	best: 0.3046961 (133)	total: 53.2s	remaining: 24.5s
-137:	learn: 0.2795109	test: 0.3046507	best: 0.3046507 (137)	total: 53.5s	remaining: 24.1s
-138:	learn: 0.2792916	test: 0.3046729	best: 0.3046507 (137)	total: 54.1s	remaining: 23.7s
-139:	learn: 0.2791018	test: 0.3046299	best: 0.3046299 (139)	total: 54.4s	remaining: 23.3s
-140:	learn: 0.2789799	test: 0.3046072	best: 0.3046072 (140)	total: 55s	remaining: 23s
-141:	learn: 0.2788655	test: 0.3046293	best: 0.3046072 (140)	total: 55.5s	remaining: 22.6s
-142:	learn: 0.2785248	test: 0.3045994	best: 0.3045994 (142)	total: 55.9s	remaining: 22.3s
-143:	learn: 0.2783693	test: 0.3045749	best: 0.3045749 (143)	total: 56.2s	remaining: 21.9s
-144:	learn: 0.2782986	test: 0.3045629	best: 0.3045629 (144)	total: 56.6s	remaining: 21.5s
-145:	learn: 0.2782002	test: 0.3045740	best: 0.3045629 (144)	total: 56.9s	remaining: 21.1s
-146:	learn: 0.2780298	test: 0.3045868	best: 0.3045629 (144)	total: 57.5s	remaining: 20.7s
-147:	learn: 0.2778956	test: 0.3046442	best: 0.3045629 (144)	total: 57.9s	remaining: 20.3s
-148:	learn: 0.2776616	test: 0.3046708	best: 0.3045629 (144)	total: 58.3s	remaining: 20s
-149:	learn: 0.2773682	test: 0.3046600	best: 0.3045629 (144)	total: 58.7s	remaining: 19.6s
-150:	learn: 0.2772306	test: 0.3046588	best: 0.3045629 (144)	total: 59.1s	remaining: 19.2s
-151:	learn: 0.2769540	test: 0.3046256	best: 0.3045629 (144)	total: 59.4s	remaining: 18.8s
-152:	learn: 0.2768319	test: 0.3045897	best: 0.3045629 (144)	total: 59.8s	remaining: 18.4s
-153:	learn: 0.2767787	test: 0.3045880	best: 0.3045629 (144)	total: 1m	remaining: 18s
-154:	learn: 0.2763585	test: 0.3046168	best: 0.3045629 (144)	total: 1m	remaining: 17.6s
-155:	learn: 0.2762060	test: 0.3046283	best: 0.3045629 (144)	total: 1m 1s	remaining: 17.3s
-156:	learn: 0.2760227	test: 0.3046180	best: 0.3045629 (144)	total: 1m 1s	remaining: 16.9s
-157:	learn: 0.2757705	test: 0.3046243	best: 0.3045629 (144)	total: 1m 2s	remaining: 16.5s
-158:	learn: 0.2753730	test: 0.3045601	best: 0.3045601 (158)	total: 1m 2s	remaining: 16.1s
-159:	learn: 0.2753110	test: 0.3045688	best: 0.3045601 (158)	total: 1m 2s	remaining: 15.7s
-160:	learn: 0.2751000	test: 0.3045672	best: 0.3045601 (158)	total: 1m 3s	remaining: 15.3s
-161:	learn: 0.2749663	test: 0.3045382	best: 0.3045382 (161)	total: 1m 3s	remaining: 14.9s
-162:	learn: 0.2746068	test: 0.3045598	best: 0.3045382 (161)	total: 1m 4s	remaining: 14.5s
-163:	learn: 0.2744139	test: 0.3045536	best: 0.3045382 (161)	total: 1m 4s	remaining: 14.2s
-164:	learn: 0.2742769	test: 0.3045212	best: 0.3045212 (164)	total: 1m 4s	remaining: 13.8s
-165:	learn: 0.2741389	test: 0.3044951	best: 0.3044951 (165)	total: 1m 5s	remaining: 13.4s
-166:	learn: 0.2739622	test: 0.3044750	best: 0.3044750 (166)	total: 1m 5s	remaining: 13s
-167:	learn: 0.2738527	test: 0.3045114	best: 0.3044750 (166)	total: 1m 6s	remaining: 12.6s
-168:	learn: 0.2735597	test: 0.3044649	best: 0.3044649 (168)	total: 1m 6s	remaining: 12.2s
-169:	learn: 0.2733465	test: 0.3044824	best: 0.3044649 (168)	total: 1m 7s	remaining: 11.8s
-170:	learn: 0.2731564	test: 0.3044756	best: 0.3044649 (168)	total: 1m 7s	remaining: 11.4s
-171:	learn: 0.2731102	test: 0.3044890	best: 0.3044649 (168)	total: 1m 7s	remaining: 11s
-172:	learn: 0.2729453	test: 0.3044518	best: 0.3044518 (172)	total: 1m 8s	remaining: 10.7s
-173:	learn: 0.2728186	test: 0.3044534	best: 0.3044518 (172)	total: 1m 8s	remaining: 10.3s
-174:	learn: 0.2726213	test: 0.3044403	best: 0.3044403 (174)	total: 1m 9s	remaining: 9.87s
-175:	learn: 0.2724907	test: 0.3044497	best: 0.3044403 (174)	total: 1m 9s	remaining: 9.47s
-176:	learn: 0.2724714	test: 0.3044567	best: 0.3044403 (174)	total: 1m 9s	remaining: 9.07s
-177:	learn: 0.2721907	test: 0.3044677	best: 0.3044403 (174)	total: 1m 10s	remaining: 8.69s
-178:	learn: 0.2717767	test: 0.3044374	best: 0.3044374 (178)	total: 1m 10s	remaining: 8.28s
-179:	learn: 0.2715400	test: 0.3044164	best: 0.3044164 (179)	total: 1m 11s	remaining: 7.89s
-180:	learn: 0.2713677	test: 0.3044403	best: 0.3044164 (179)	total: 1m 11s	remaining: 7.51s
-181:	learn: 0.2712501	test: 0.3044080	best: 0.3044080 (181)	total: 1m 11s	remaining: 7.12s
-182:	learn: 0.2710562	test: 0.3044071	best: 0.3044071 (182)	total: 1m 12s	remaining: 6.73s
-183:	learn: 0.2708171	test: 0.3044286	best: 0.3044071 (182)	total: 1m 12s	remaining: 6.34s
-184:	learn: 0.2707414	test: 0.3044160	best: 0.3044071 (182)	total: 1m 13s	remaining: 5.96s
-185:	learn: 0.2705380	test: 0.3044217	best: 0.3044071 (182)	total: 1m 13s	remaining: 5.56s
-186:	learn: 0.2703569	test: 0.3044035	best: 0.3044035 (186)	total: 1m 14s	remaining: 5.16s
-187:	learn: 0.2702026	test: 0.3044187	best: 0.3044035 (186)	total: 1m 14s	remaining: 4.77s
-188:	learn: 0.2699401	test: 0.3043620	best: 0.3043620 (188)	total: 1m 15s	remaining: 4.38s
-189:	learn: 0.2697694	test: 0.3043487	best: 0.3043487 (189)	total: 1m 15s	remaining: 3.98s
-190:	learn: 0.2695771	test: 0.3043742	best: 0.3043487 (189)	total: 1m 16s	remaining: 3.58s
-191:	learn: 0.2695093	test: 0.3043918	best: 0.3043487 (189)	total: 1m 16s	remaining: 3.19s
-192:	learn: 0.2693613	test: 0.3044114	best: 0.3043487 (189)	total: 1m 16s	remaining: 2.79s
-193:	learn: 0.2690947	test: 0.3044189	best: 0.3043487 (189)	total: 1m 17s	remaining: 2.39s
-194:	learn: 0.2689819	test: 0.3044445	best: 0.3043487 (189)	total: 1m 17s	remaining: 2s
-195:	learn: 0.2688702	test: 0.3044589	best: 0.3043487 (189)	total: 1m 18s	remaining: 1.6s
-196:	learn: 0.2686805	test: 0.3044715	best: 0.3043487 (189)	total: 1m 18s	remaining: 1.2s
-197:	learn: 0.2684692	test: 0.3044625	best: 0.3043487 (189)	total: 1m 19s	remaining: 798ms
-198:	learn: 0.2683486	test: 0.3044843	best: 0.3043487 (189)	total: 1m 19s	remaining: 399ms
-199:	learn: 0.2681760	test: 0.3044727	best: 0.3043487 (189)	total: 1m 19s	remaining: 0us
+<pre>0:	learn: 0.6107920	test: 0.6110849	best: 0.6110849 (0)	total: 491ms	remaining: 1m 37s
+1:	learn: 0.5500695	test: 0.5506565	best: 0.5506565 (1)	total: 862ms	remaining: 1m 25s
+2:	learn: 0.5040845	test: 0.5048828	best: 0.5048828 (2)	total: 1.09s	remaining: 1m 11s
+3:	learn: 0.4661512	test: 0.4673505	best: 0.4673505 (3)	total: 1.29s	remaining: 1m 3s
+4:	learn: 0.4387835	test: 0.4400187	best: 0.4400187 (4)	total: 1.62s	remaining: 1m 3s
+5:	learn: 0.4175803	test: 0.4188816	best: 0.4188816 (5)	total: 1.8s	remaining: 58.4s
+6:	learn: 0.3990846	test: 0.4003962	best: 0.4003962 (6)	total: 2.01s	remaining: 55.6s
+7:	learn: 0.3823553	test: 0.3835912	best: 0.3835912 (7)	total: 2.29s	remaining: 54.8s
+8:	learn: 0.3689186	test: 0.3703090	best: 0.3703090 (8)	total: 2.5s	remaining: 53.2s
+9:	learn: 0.3590653	test: 0.3607935	best: 0.3607935 (9)	total: 2.81s	remaining: 53.3s
+10:	learn: 0.3518393	test: 0.3536423	best: 0.3536423 (10)	total: 3.04s	remaining: 52.3s
+11:	learn: 0.3452116	test: 0.3472962	best: 0.3472962 (11)	total: 3.37s	remaining: 52.8s
+12:	learn: 0.3413596	test: 0.3435979	best: 0.3435979 (12)	total: 3.65s	remaining: 52.5s
+13:	learn: 0.3367999	test: 0.3390837	best: 0.3390837 (13)	total: 3.85s	remaining: 51.2s
+14:	learn: 0.3331799	test: 0.3356130	best: 0.3356130 (14)	total: 4.04s	remaining: 49.8s
+15:	learn: 0.3294153	test: 0.3321496	best: 0.3321496 (15)	total: 4.47s	remaining: 51.4s
+16:	learn: 0.3266510	test: 0.3296294	best: 0.3296294 (16)	total: 4.65s	remaining: 50.1s
+17:	learn: 0.3243895	test: 0.3275287	best: 0.3275287 (17)	total: 4.84s	remaining: 48.9s
+18:	learn: 0.3224764	test: 0.3256879	best: 0.3256879 (18)	total: 5.08s	remaining: 48.4s
+19:	learn: 0.3209444	test: 0.3242722	best: 0.3242722 (19)	total: 5.33s	remaining: 48s
+20:	learn: 0.3194301	test: 0.3229542	best: 0.3229542 (20)	total: 5.52s	remaining: 47s
+21:	learn: 0.3178866	test: 0.3218497	best: 0.3218497 (21)	total: 5.77s	remaining: 46.7s
+22:	learn: 0.3169198	test: 0.3211055	best: 0.3211055 (22)	total: 6.1s	remaining: 47s
+23:	learn: 0.3161946	test: 0.3205893	best: 0.3205893 (23)	total: 6.51s	remaining: 47.8s
+24:	learn: 0.3153361	test: 0.3199607	best: 0.3199607 (24)	total: 6.7s	remaining: 46.9s
+25:	learn: 0.3145745	test: 0.3194540	best: 0.3194540 (25)	total: 6.91s	remaining: 46.2s
+26:	learn: 0.3137985	test: 0.3188856	best: 0.3188856 (26)	total: 7.28s	remaining: 46.6s
+27:	learn: 0.3130465	test: 0.3184032	best: 0.3184032 (27)	total: 7.65s	remaining: 47s
+28:	learn: 0.3119116	test: 0.3176051	best: 0.3176051 (28)	total: 8.04s	remaining: 47.4s
+29:	learn: 0.3107820	test: 0.3168351	best: 0.3168351 (29)	total: 8.42s	remaining: 47.7s
+30:	learn: 0.3098651	test: 0.3162395	best: 0.3162395 (30)	total: 8.84s	remaining: 48.2s
+31:	learn: 0.3088976	test: 0.3157749	best: 0.3157749 (31)	total: 9.18s	remaining: 48.2s
+32:	learn: 0.3081404	test: 0.3152355	best: 0.3152355 (32)	total: 9.55s	remaining: 48.3s
+33:	learn: 0.3072043	test: 0.3148315	best: 0.3148315 (33)	total: 9.95s	remaining: 48.6s
+34:	learn: 0.3064445	test: 0.3144374	best: 0.3144374 (34)	total: 10.2s	remaining: 48.1s
+35:	learn: 0.3056229	test: 0.3142306	best: 0.3142306 (35)	total: 10.5s	remaining: 47.7s
+36:	learn: 0.3050171	test: 0.3140047	best: 0.3140047 (36)	total: 10.8s	remaining: 47.7s
+37:	learn: 0.3044779	test: 0.3137749	best: 0.3137749 (37)	total: 11.3s	remaining: 48.2s
+38:	learn: 0.3039523	test: 0.3135808	best: 0.3135808 (38)	total: 11.7s	remaining: 48.2s
+39:	learn: 0.3035398	test: 0.3134399	best: 0.3134399 (39)	total: 12.1s	remaining: 48.3s
+40:	learn: 0.3030739	test: 0.3133146	best: 0.3133146 (40)	total: 12.5s	remaining: 48.4s
+41:	learn: 0.3026133	test: 0.3131138	best: 0.3131138 (41)	total: 12.9s	remaining: 48.4s
+42:	learn: 0.3020643	test: 0.3129841	best: 0.3129841 (42)	total: 13.3s	remaining: 48.4s
+43:	learn: 0.3016235	test: 0.3128023	best: 0.3128023 (43)	total: 13.7s	remaining: 48.5s
+44:	learn: 0.3009744	test: 0.3125685	best: 0.3125685 (44)	total: 14.1s	remaining: 48.5s
+45:	learn: 0.3007100	test: 0.3125075	best: 0.3125075 (45)	total: 14.4s	remaining: 48.3s
+46:	learn: 0.3000864	test: 0.3124282	best: 0.3124282 (46)	total: 14.7s	remaining: 47.9s
+47:	learn: 0.2995831	test: 0.3123574	best: 0.3123574 (47)	total: 15.2s	remaining: 48s
+48:	learn: 0.2992419	test: 0.3122834	best: 0.3122834 (48)	total: 15.5s	remaining: 47.7s
+49:	learn: 0.2989370	test: 0.3122669	best: 0.3122669 (49)	total: 15.8s	remaining: 47.5s
+50:	learn: 0.2987092	test: 0.3121692	best: 0.3121692 (50)	total: 16.2s	remaining: 47.3s
+51:	learn: 0.2984801	test: 0.3121345	best: 0.3121345 (51)	total: 16.5s	remaining: 47.1s
+52:	learn: 0.2981984	test: 0.3120130	best: 0.3120130 (52)	total: 17s	remaining: 47s
+53:	learn: 0.2978718	test: 0.3120319	best: 0.3120130 (52)	total: 17.3s	remaining: 46.7s
+54:	learn: 0.2975391	test: 0.3119813	best: 0.3119813 (54)	total: 17.7s	remaining: 46.8s
+55:	learn: 0.2973083	test: 0.3119109	best: 0.3119109 (55)	total: 18.2s	remaining: 46.8s
+56:	learn: 0.2970364	test: 0.3118881	best: 0.3118881 (56)	total: 18.5s	remaining: 46.3s
+57:	learn: 0.2967289	test: 0.3118463	best: 0.3118463 (57)	total: 18.8s	remaining: 46s
+58:	learn: 0.2961328	test: 0.3117822	best: 0.3117822 (58)	total: 19.3s	remaining: 46s
+59:	learn: 0.2958536	test: 0.3116977	best: 0.3116977 (59)	total: 19.7s	remaining: 45.9s
+60:	learn: 0.2956121	test: 0.3116513	best: 0.3116513 (60)	total: 20.1s	remaining: 45.8s
+61:	learn: 0.2953670	test: 0.3116069	best: 0.3116069 (61)	total: 20.4s	remaining: 45.5s
+62:	learn: 0.2950548	test: 0.3115783	best: 0.3115783 (62)	total: 20.7s	remaining: 45.1s
+63:	learn: 0.2947676	test: 0.3115117	best: 0.3115117 (63)	total: 21.1s	remaining: 44.8s
+64:	learn: 0.2946000	test: 0.3114749	best: 0.3114749 (64)	total: 21.5s	remaining: 44.6s
+65:	learn: 0.2942650	test: 0.3114765	best: 0.3114749 (64)	total: 21.9s	remaining: 44.4s
+66:	learn: 0.2940911	test: 0.3114656	best: 0.3114656 (66)	total: 22.2s	remaining: 44s
+67:	learn: 0.2937196	test: 0.3114322	best: 0.3114322 (67)	total: 22.6s	remaining: 43.9s
+68:	learn: 0.2934435	test: 0.3113491	best: 0.3113491 (68)	total: 22.9s	remaining: 43.5s
+69:	learn: 0.2932168	test: 0.3113130	best: 0.3113130 (69)	total: 23.4s	remaining: 43.5s
+70:	learn: 0.2930174	test: 0.3112580	best: 0.3112580 (70)	total: 23.8s	remaining: 43.3s
+71:	learn: 0.2925757	test: 0.3112133	best: 0.3112133 (71)	total: 24.3s	remaining: 43.1s
+72:	learn: 0.2921315	test: 0.3111057	best: 0.3111057 (72)	total: 24.7s	remaining: 42.9s
+73:	learn: 0.2918591	test: 0.3111076	best: 0.3111057 (72)	total: 25s	remaining: 42.5s
+74:	learn: 0.2915207	test: 0.3110334	best: 0.3110334 (74)	total: 25.6s	remaining: 42.7s
+75:	learn: 0.2911890	test: 0.3109352	best: 0.3109352 (75)	total: 26s	remaining: 42.4s
+76:	learn: 0.2908995	test: 0.3108710	best: 0.3108710 (76)	total: 26.2s	remaining: 41.8s
+77:	learn: 0.2904701	test: 0.3108339	best: 0.3108339 (77)	total: 26.6s	remaining: 41.6s
+78:	learn: 0.2902537	test: 0.3108206	best: 0.3108206 (78)	total: 26.9s	remaining: 41.1s
+79:	learn: 0.2899102	test: 0.3107819	best: 0.3107819 (79)	total: 27.3s	remaining: 40.9s
+80:	learn: 0.2896350	test: 0.3107567	best: 0.3107567 (80)	total: 27.5s	remaining: 40.5s
+81:	learn: 0.2893109	test: 0.3107318	best: 0.3107318 (81)	total: 27.9s	remaining: 40.2s
+82:	learn: 0.2890992	test: 0.3107054	best: 0.3107054 (82)	total: 28.4s	remaining: 40.1s
+83:	learn: 0.2888703	test: 0.3107537	best: 0.3107054 (82)	total: 28.8s	remaining: 39.8s
+84:	learn: 0.2884580	test: 0.3107516	best: 0.3107054 (82)	total: 29.1s	remaining: 39.4s
+85:	learn: 0.2882925	test: 0.3106984	best: 0.3106984 (85)	total: 29.5s	remaining: 39.1s
+86:	learn: 0.2880279	test: 0.3107008	best: 0.3106984 (85)	total: 29.8s	remaining: 38.7s
+87:	learn: 0.2876650	test: 0.3106170	best: 0.3106170 (87)	total: 30.2s	remaining: 38.4s
+88:	learn: 0.2874279	test: 0.3106132	best: 0.3106132 (88)	total: 30.5s	remaining: 38s
+89:	learn: 0.2872699	test: 0.3106012	best: 0.3106012 (89)	total: 30.9s	remaining: 37.8s
+90:	learn: 0.2872622	test: 0.3105902	best: 0.3105902 (90)	total: 30.9s	remaining: 37.1s
+91:	learn: 0.2871636	test: 0.3105549	best: 0.3105549 (91)	total: 31.3s	remaining: 36.8s
+92:	learn: 0.2869666	test: 0.3104674	best: 0.3104674 (92)	total: 31.7s	remaining: 36.5s
+93:	learn: 0.2865113	test: 0.3103918	best: 0.3103918 (93)	total: 32.1s	remaining: 36.2s
+94:	learn: 0.2862555	test: 0.3103405	best: 0.3103405 (94)	total: 32.5s	remaining: 36s
+95:	learn: 0.2860173	test: 0.3103029	best: 0.3103029 (95)	total: 32.9s	remaining: 35.7s
+96:	learn: 0.2856682	test: 0.3103386	best: 0.3103029 (95)	total: 33.2s	remaining: 35.3s
+97:	learn: 0.2854214	test: 0.3103323	best: 0.3103029 (95)	total: 33.8s	remaining: 35.2s
+98:	learn: 0.2852806	test: 0.3103104	best: 0.3103029 (95)	total: 34.2s	remaining: 34.9s
+99:	learn: 0.2850445	test: 0.3102538	best: 0.3102538 (99)	total: 34.6s	remaining: 34.6s
+100:	learn: 0.2846433	test: 0.3101922	best: 0.3101922 (100)	total: 35.1s	remaining: 34.4s
+101:	learn: 0.2844769	test: 0.3101666	best: 0.3101666 (101)	total: 35.5s	remaining: 34.1s
+102:	learn: 0.2841762	test: 0.3100569	best: 0.3100569 (102)	total: 35.9s	remaining: 33.8s
+103:	learn: 0.2838823	test: 0.3100880	best: 0.3100569 (102)	total: 36.1s	remaining: 33.3s
+104:	learn: 0.2837267	test: 0.3100659	best: 0.3100569 (102)	total: 36.6s	remaining: 33.1s
+105:	learn: 0.2835506	test: 0.3100691	best: 0.3100569 (102)	total: 37s	remaining: 32.8s
+106:	learn: 0.2832924	test: 0.3100305	best: 0.3100305 (106)	total: 37.3s	remaining: 32.5s
+107:	learn: 0.2831348	test: 0.3100214	best: 0.3100214 (107)	total: 37.7s	remaining: 32.1s
+108:	learn: 0.2828737	test: 0.3100374	best: 0.3100214 (107)	total: 38s	remaining: 31.8s
+109:	learn: 0.2827715	test: 0.3100395	best: 0.3100214 (107)	total: 38.6s	remaining: 31.6s
+110:	learn: 0.2824183	test: 0.3099514	best: 0.3099514 (110)	total: 39s	remaining: 31.2s
+111:	learn: 0.2820047	test: 0.3099079	best: 0.3099079 (111)	total: 39.4s	remaining: 30.9s
+112:	learn: 0.2819243	test: 0.3099244	best: 0.3099079 (111)	total: 39.7s	remaining: 30.5s
+113:	learn: 0.2817705	test: 0.3099239	best: 0.3099079 (111)	total: 40.2s	remaining: 30.3s
+114:	learn: 0.2814790	test: 0.3098788	best: 0.3098788 (114)	total: 40.6s	remaining: 30s
+115:	learn: 0.2813828	test: 0.3098898	best: 0.3098788 (114)	total: 41.1s	remaining: 29.8s
+116:	learn: 0.2812429	test: 0.3098635	best: 0.3098635 (116)	total: 41.9s	remaining: 29.7s
+117:	learn: 0.2808860	test: 0.3098925	best: 0.3098635 (116)	total: 42.5s	remaining: 29.6s
+118:	learn: 0.2808084	test: 0.3098803	best: 0.3098635 (116)	total: 42.8s	remaining: 29.1s
+119:	learn: 0.2807222	test: 0.3098524	best: 0.3098524 (119)	total: 43.4s	remaining: 28.9s
+120:	learn: 0.2806185	test: 0.3098225	best: 0.3098225 (120)	total: 43.7s	remaining: 28.5s
+121:	learn: 0.2801444	test: 0.3096835	best: 0.3096835 (121)	total: 44.5s	remaining: 28.4s
+122:	learn: 0.2799465	test: 0.3096654	best: 0.3096654 (122)	total: 45.1s	remaining: 28.2s
+123:	learn: 0.2796995	test: 0.3096184	best: 0.3096184 (123)	total: 45.5s	remaining: 27.9s
+124:	learn: 0.2794344	test: 0.3095887	best: 0.3095887 (124)	total: 46s	remaining: 27.6s
+125:	learn: 0.2792185	test: 0.3095816	best: 0.3095816 (125)	total: 46.2s	remaining: 27.1s
+126:	learn: 0.2791255	test: 0.3095792	best: 0.3095792 (126)	total: 46.5s	remaining: 26.7s
+127:	learn: 0.2789561	test: 0.3095605	best: 0.3095605 (127)	total: 47.1s	remaining: 26.5s
+128:	learn: 0.2785361	test: 0.3095015	best: 0.3095015 (128)	total: 47.5s	remaining: 26.2s
+129:	learn: 0.2781807	test: 0.3095286	best: 0.3095015 (128)	total: 47.9s	remaining: 25.8s
+130:	learn: 0.2780119	test: 0.3095241	best: 0.3095015 (128)	total: 48.3s	remaining: 25.4s
+131:	learn: 0.2778457	test: 0.3094988	best: 0.3094988 (131)	total: 48.8s	remaining: 25.1s
+132:	learn: 0.2776932	test: 0.3094876	best: 0.3094876 (132)	total: 49s	remaining: 24.7s
+133:	learn: 0.2776016	test: 0.3094862	best: 0.3094862 (133)	total: 49.4s	remaining: 24.3s
+134:	learn: 0.2772953	test: 0.3094905	best: 0.3094862 (133)	total: 49.7s	remaining: 23.9s
+135:	learn: 0.2770282	test: 0.3095336	best: 0.3094862 (133)	total: 50.2s	remaining: 23.6s
+136:	learn: 0.2769151	test: 0.3095117	best: 0.3094862 (133)	total: 50.7s	remaining: 23.3s
+137:	learn: 0.2767890	test: 0.3095048	best: 0.3094862 (133)	total: 51.1s	remaining: 23s
+138:	learn: 0.2765797	test: 0.3094974	best: 0.3094862 (133)	total: 51.6s	remaining: 22.6s
+139:	learn: 0.2762092	test: 0.3094964	best: 0.3094862 (133)	total: 52.1s	remaining: 22.3s
+140:	learn: 0.2758299	test: 0.3095140	best: 0.3094862 (133)	total: 52.6s	remaining: 22s
+141:	learn: 0.2756338	test: 0.3094794	best: 0.3094794 (141)	total: 53.1s	remaining: 21.7s
+142:	learn: 0.2754235	test: 0.3094690	best: 0.3094690 (142)	total: 53.5s	remaining: 21.3s
+143:	learn: 0.2752786	test: 0.3094674	best: 0.3094674 (143)	total: 54s	remaining: 21s
+144:	learn: 0.2748092	test: 0.3095215	best: 0.3094674 (143)	total: 54.4s	remaining: 20.6s
+145:	learn: 0.2745149	test: 0.3095647	best: 0.3094674 (143)	total: 54.8s	remaining: 20.3s
+146:	learn: 0.2741617	test: 0.3095304	best: 0.3094674 (143)	total: 55.3s	remaining: 19.9s
+147:	learn: 0.2739715	test: 0.3095447	best: 0.3094674 (143)	total: 55.6s	remaining: 19.5s
+148:	learn: 0.2736033	test: 0.3096195	best: 0.3094674 (143)	total: 56s	remaining: 19.2s
+149:	learn: 0.2732993	test: 0.3096612	best: 0.3094674 (143)	total: 56.2s	remaining: 18.7s
+150:	learn: 0.2730508	test: 0.3096683	best: 0.3094674 (143)	total: 56.7s	remaining: 18.4s
+151:	learn: 0.2729570	test: 0.3096779	best: 0.3094674 (143)	total: 57s	remaining: 18s
+152:	learn: 0.2727614	test: 0.3096636	best: 0.3094674 (143)	total: 57.5s	remaining: 17.6s
+153:	learn: 0.2724785	test: 0.3096741	best: 0.3094674 (143)	total: 57.9s	remaining: 17.3s
+154:	learn: 0.2721862	test: 0.3097116	best: 0.3094674 (143)	total: 58.2s	remaining: 16.9s
+155:	learn: 0.2720772	test: 0.3097261	best: 0.3094674 (143)	total: 58.6s	remaining: 16.5s
+156:	learn: 0.2719842	test: 0.3097233	best: 0.3094674 (143)	total: 59.4s	remaining: 16.3s
+157:	learn: 0.2716950	test: 0.3097367	best: 0.3094674 (143)	total: 1m	remaining: 16s
+158:	learn: 0.2715542	test: 0.3097173	best: 0.3094674 (143)	total: 1m	remaining: 15.6s
+159:	learn: 0.2712229	test: 0.3096679	best: 0.3094674 (143)	total: 1m 1s	remaining: 15.3s
+160:	learn: 0.2710138	test: 0.3096727	best: 0.3094674 (143)	total: 1m 1s	remaining: 15s
+161:	learn: 0.2708535	test: 0.3096737	best: 0.3094674 (143)	total: 1m 2s	remaining: 14.6s
+162:	learn: 0.2706456	test: 0.3096335	best: 0.3094674 (143)	total: 1m 2s	remaining: 14.3s
+163:	learn: 0.2703665	test: 0.3096959	best: 0.3094674 (143)	total: 1m 3s	remaining: 13.9s
+164:	learn: 0.2702152	test: 0.3096926	best: 0.3094674 (143)	total: 1m 3s	remaining: 13.5s
+165:	learn: 0.2700555	test: 0.3096904	best: 0.3094674 (143)	total: 1m 4s	remaining: 13.1s
+166:	learn: 0.2699230	test: 0.3096874	best: 0.3094674 (143)	total: 1m 4s	remaining: 12.7s
+167:	learn: 0.2696382	test: 0.3097345	best: 0.3094674 (143)	total: 1m 4s	remaining: 12.3s
+168:	learn: 0.2694678	test: 0.3097581	best: 0.3094674 (143)	total: 1m 5s	remaining: 11.9s
+169:	learn: 0.2691882	test: 0.3097583	best: 0.3094674 (143)	total: 1m 5s	remaining: 11.6s
+170:	learn: 0.2689550	test: 0.3097698	best: 0.3094674 (143)	total: 1m 6s	remaining: 11.2s
+171:	learn: 0.2688170	test: 0.3097367	best: 0.3094674 (143)	total: 1m 6s	remaining: 10.8s
+172:	learn: 0.2686002	test: 0.3097884	best: 0.3094674 (143)	total: 1m 7s	remaining: 10.5s
+173:	learn: 0.2684239	test: 0.3097382	best: 0.3094674 (143)	total: 1m 7s	remaining: 10.1s
+174:	learn: 0.2681324	test: 0.3097500	best: 0.3094674 (143)	total: 1m 7s	remaining: 9.69s
+175:	learn: 0.2679369	test: 0.3097816	best: 0.3094674 (143)	total: 1m 8s	remaining: 9.3s
+176:	learn: 0.2676884	test: 0.3097977	best: 0.3094674 (143)	total: 1m 8s	remaining: 8.92s
+177:	learn: 0.2675119	test: 0.3097983	best: 0.3094674 (143)	total: 1m 9s	remaining: 8.54s
+178:	learn: 0.2674031	test: 0.3098048	best: 0.3094674 (143)	total: 1m 9s	remaining: 8.17s
+179:	learn: 0.2671970	test: 0.3098355	best: 0.3094674 (143)	total: 1m 10s	remaining: 7.78s
+180:	learn: 0.2669589	test: 0.3098182	best: 0.3094674 (143)	total: 1m 10s	remaining: 7.39s
+181:	learn: 0.2669142	test: 0.3098109	best: 0.3094674 (143)	total: 1m 11s	remaining: 7.02s
+182:	learn: 0.2669014	test: 0.3098070	best: 0.3094674 (143)	total: 1m 11s	remaining: 6.63s
+183:	learn: 0.2667803	test: 0.3098136	best: 0.3094674 (143)	total: 1m 11s	remaining: 6.25s
+184:	learn: 0.2665385	test: 0.3098573	best: 0.3094674 (143)	total: 1m 12s	remaining: 5.87s
+185:	learn: 0.2663733	test: 0.3098730	best: 0.3094674 (143)	total: 1m 12s	remaining: 5.48s
+186:	learn: 0.2662579	test: 0.3098835	best: 0.3094674 (143)	total: 1m 13s	remaining: 5.09s
+187:	learn: 0.2659574	test: 0.3098425	best: 0.3094674 (143)	total: 1m 13s	remaining: 4.69s
+188:	learn: 0.2657573	test: 0.3098278	best: 0.3094674 (143)	total: 1m 13s	remaining: 4.3s
+189:	learn: 0.2655451	test: 0.3097844	best: 0.3094674 (143)	total: 1m 14s	remaining: 3.91s
+190:	learn: 0.2653752	test: 0.3097898	best: 0.3094674 (143)	total: 1m 14s	remaining: 3.52s
+191:	learn: 0.2652986	test: 0.3097790	best: 0.3094674 (143)	total: 1m 15s	remaining: 3.13s
+192:	learn: 0.2651678	test: 0.3097748	best: 0.3094674 (143)	total: 1m 15s	remaining: 2.74s
+193:	learn: 0.2650605	test: 0.3097776	best: 0.3094674 (143)	total: 1m 16s	remaining: 2.35s
+194:	learn: 0.2649098	test: 0.3097719	best: 0.3094674 (143)	total: 1m 16s	remaining: 1.96s
+195:	learn: 0.2646612	test: 0.3098062	best: 0.3094674 (143)	total: 1m 16s	remaining: 1.57s
+196:	learn: 0.2644417	test: 0.3097932	best: 0.3094674 (143)	total: 1m 17s	remaining: 1.18s
+197:	learn: 0.2641271	test: 0.3097842	best: 0.3094674 (143)	total: 1m 17s	remaining: 785ms
+198:	learn: 0.2640487	test: 0.3097828	best: 0.3094674 (143)	total: 1m 18s	remaining: 393ms
+199:	learn: 0.2639360	test: 0.3098038	best: 0.3094674 (143)	total: 1m 18s	remaining: 0us
 
-bestTest = 0.3043486701
-bestIteration = 189
+bestTest = 0.3094674465
+bestIteration = 143
 
-Shrink model to first 190 iterations.
+Shrink model to first 144 iterations.
 </pre>
 </div>
 </div>
@@ -15589,7 +16805,7 @@ Shrink model to first 190 iterations.
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&lt;catboost.core.CatBoostClassifier at 0x7f713f151060&gt;</pre>
+<pre>&lt;catboost.core.CatBoostClassifier at 0x7f482a1a6b90&gt;</pre>
 </div>
 
 </div>
@@ -15598,6 +16814,18 @@ Shrink model to first 190 iterations.
 
 </div>
 
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Finally, we can evaluate Machine Learning model</p>
+
+</div>
+</div>
+</div>
 </div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15628,141 +16856,10 @@ Shrink model to first 190 iterations.
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Accuracy Score CatBoost is 0.8730875268882359
-ROC AOC Score CatBoost is 0.763326341860977
+<pre>Accuracy Score CatBoost is 0.8699972733056625
+ROC AOC Score CatBoost is 0.7579579147234344
 </pre>
 </div>
-</div>
-
-</div>
-
-</div>
-
-</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Final_result</span> <span class="o">=</span> <span class="n">model_catboost</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sample_submission</span><span class="p">[</span><span class="s1">&#39;Exited&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Final_result</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">sample_submission</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;submission.csv&quot;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">sample_submission</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>Exited</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>165034</td>
-      <td>0.008656</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>165035</td>
-      <td>0.838121</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>165036</td>
-      <td>0.016013</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>165037</td>
-      <td>0.168343</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>165038</td>
-      <td>0.396883</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>165039</td>
-      <td>0.075935</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>165040</td>
-      <td>0.023377</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>165041</td>
-      <td>0.089212</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>165042</td>
-      <td>0.645189</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>165043</td>
-      <td>0.004763</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
 </div>
 
 </div>
